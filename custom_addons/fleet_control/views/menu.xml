@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+            id="menu_root_dispatch"
+            name="Bus Deployment"/>
+
+    <menuitem
+            id="menu_bus_dispatch"
+            name="Deployment"
+            parent="menu_root_dispatch"/>
+
+    <menuitem
+            id="menu_bus_deployment"
+            name="Bus Deployment"
+            parent="menu_bus_dispatch"
+            action="action_bus_deployment"/>
+
+    <menuitem
+            id="menu_bus_settings"
+            name="Setting"
+            parent="menu_root_dispatch"
+            groups="fleet_control.group_bus_dispatcher"/>
+
+    <menuitem
+            id="menu_bus_info"
+            name="Bus Information"
+            parent="menu_bus_settings"
+            action="action_bus_information"
+            groups="fleet_control.group_bus_dispatcher"/>
+
+    <menuitem
+            id="menu_bus_route"
+            name="Bus Route"
+            parent="menu_bus_settings"
+            action="action_bus_route"
+            groups="fleet_control.group_bus_admin"/>
+
+
+    <menuitem
+            id="menu_bus_station"
+            name="Bus Stations"
+            parent="menu_bus_settings"
+            action="action_bus_stations"
+            groups="fleet_control.group_bus_admin"/>
+
+    <menuitem
+            id="menu_bus_depot"
+            name="Bus Depot"
+            parent="menu_bus_settings"
+            action="action_bus_depot"
+            groups="fleet_control.group_bus_admin"/>
+
+</odoo>

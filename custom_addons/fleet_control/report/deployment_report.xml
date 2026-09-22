@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_bus_deployment_report" model="ir.actions.report">
+        <field name="name">Daily Bus Deployment Sheet</field>
+        <field name="model">bus.deployment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">fleet_control.report_bus_deployment</field>
+        <field name="report_file">fleet_control.report_bus_deployment</field>
+        <field name="print_report_name">'Deployment_%s' % (object.name or '')</field>
+        <field name="attachment">object.name + '.pdf'</field>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

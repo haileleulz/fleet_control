@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="report_bus_deployment">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="o">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+
+                        <h2>Daily Bus Deployment Sheet</h2>
+
+                        <h3>Deployment Information</h3>
+
+                        <table class="table table-sm">
+
+                            <tr>
+                                <td><strong>Bus</strong></td>
+                                <td><span t-field="o.bus_id.side_plate"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Route</strong></td>
+                                <td><span t-field="o.route_id.route_number"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Depot</strong></td>
+                                <td><span t-field="o.depot_id.name"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Date</strong></td>
+                                <td><span t-field="o.date"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Status</strong></td>
+                                <td><span t-field="o.state"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Dispatcher</strong></td>
+                                <td><span t-field="o.dispatcher_id"/></td>
+                            </tr>
+
+                        </table>
+
+                        <br/>
+
+                        <h3>Morning Shift</h3>
+
+                        <table class="table table-sm">
+
+                            <tr>
+                                <td><strong>Driver</strong></td>
+                                <td><span t-field="o.morning_driver_id"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Conductor</strong></td>
+                                <td><span t-field="o.morning_conductor_id"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Start Time</strong></td>
+                                <td><span t-field="o.morning_start_time"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>End Time</strong></td>
+                                <td><span t-field="o.morning_end_time"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Trips</strong></td>
+                                <td><span t-field="o.morning_trip_count"/></td>
+                            </tr>
+
+                        </table>
+
+                        <br/>
+
+                        <h3>Afternoon Shift</h3>
+
+                        <table class="table table-sm">
+
+                            <tr>
+                                <td><strong>Driver</strong></td>
+                                <td><span t-field="o.afternoon_driver_id"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Conductor</strong></td>
+                                <td><span t-field="o.afternoon_conductor_id"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Start Time</strong></td>
+                                <td><span t-field="o.afternoon_start_time"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>End Time</strong></td>
+                                <td><span t-field="o.afternoon_end_time"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Trips</strong></td>
+                                <td><span t-field="o.afternoon_trip_count"/></td>
+                            </tr>
+
+                        </table>
+
+                        <br/>
+
+                        <h3>Summary</h3>
+
+                        <table class="table table-sm">
+
+                            <tr>
+                                <td><strong>Total Trips</strong></td>
+                                <td><span t-field="o.total_trip_count"/></td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

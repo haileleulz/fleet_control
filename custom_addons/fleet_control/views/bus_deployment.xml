@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="bus_deployment_tree_view" model="ir.ui.view">
+            <field name="name">bus.deployment.tree</field>
+            <field name="model">bus.deployment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="morning_driver_id" optional="hide"/>
+                    <field name="afternoon_driver_id" optional="hide"/>
+                    <field name="dispatcher_id" optional="hide"/>
+                    <field name="route_id"/>
+                    <field name="total_trip_count"/>
+                    <field name="state"/>
+                    <field name="morning_trip_count" optional="hide"/>
+                    <field name="afternoon_trip_count" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bus_deployment_form_view" model="ir.ui.view">
+            <field name="name">bus.deployment.form</field>
+            <field name="model">bus.deployment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_draft" type="object" string="Draft" class="btn btn-primary"/>
+                        <button name="action_submitted" type="object" string="Submit" class="btn btn-danger"/>
+                        <button name="action_approved" type="object" string="Approved" class="btn btn-primary"
+                                groups="fleet_control.group_bus_admin"/>
+                        <button name="action_rejected" type="object" string="Rejected" class="btn btn-danger"
+                                groups="fleet_control.group_bus_admin"/>
+                        <button name="action_resubmit" type="object" string="Resubmit" class="btn btn-danger"
+                                invisible="state != 'rejected'"/>
+                        <field name="state" widget="statusbar"/>
+                        <button name="%(action_bus_deployment_report)d" type="action" string="Print"
+                                class="btn-primary" icon="fa-print"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="bus_id"/>
+                                <field name="route_id"/>
+                                <field name="total_trip_count"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="name"/>
+                                <field name="edited_on" invisible="not edited_on"/>
+                                <field name="dispatcher_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Details and Rerouting">
+                                <field name="additional_info_ids">
+                                    <tree editable="bottom">
+                                        <field name="note"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Morning Info">
+                                <group>
+                                    <field name="morning_driver_id"/>
+                                    <field name="morning_conductor_id"/>
+                                    <field name="morning_start_time" widget="float_time"/>
+                                    <field name="morning_end_time" widget="float_time"/>
+                                    <field name="morning_trip_count"/>
+                                </group>
+                            </page>
+                            <page string="Afternoon Info">
+                                <group>
+                                    <field name="afternoon_driver_id"/>
+                                    <field name="afternoon_conductor_id"/>
+                                    <field name="afternoon_start_time" widget="float_time"/>
+                                    <field name="afternoon_end_time" widget="float_time"/>
+                                    <field name="afternoon_trip_count"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_bus_deployment" model="ir.actions.act_window">
+            <field name="name">Bus Deployment</field>
+            <field name="res_model">bus.deployment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_nocontent_smiling_face">
+                    Create Your content here
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

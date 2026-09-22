@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="bus_route_tree_view" model="ir.ui.view">
+            <field name="name">bus.route.tree</field>
+            <field name="model">bus.route</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="route_name"/>
+                    <field name="route_number"/>
+                    <field name="tariff" widget="monetary"/>
+                    <field name="category"/>
+                    <field name="number_of_stations"/>
+                    <field name="currency_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bus_route_form_view" model="ir.ui.view">
+            <field name="name">bus.route.form</field>
+            <field name="model">bus.route</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="route_name"/>
+                                <field name="route_number"/>
+                                <field name="starting_station_id"/>
+                                <field name="ending_station_id"/>
+                                <field name="tariff" widget="monetary"/>
+                                <field name="trip_time"/>
+                                <field name="number_of_stations"/>
+                                <field name="total_km"/>
+                                <field name="category"/>
+                                <field name="currency_id"/>
+                            </group>
+                            <group>
+                                <field name="station_ids"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_bus_route" model="ir.actions.act_window">
+            <field name="name">Bus Route</field>
+            <field name="res_model">bus.route</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_nocontent_smiling_face">
+                    Create Your content here
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
