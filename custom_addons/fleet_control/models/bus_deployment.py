@@ -4,7 +4,8 @@ from odoo import fields, models, api
 class BusDeployment(models.Model):
     _name = "bus.deployment"
     _description = "Bus Deployment"
-    _rec_name = "name"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    # _rec_name = "name"
 
     name = fields.Char(compute="_compute_name", store=True)
     date = fields.Date(string="Date", default=fields.Date.today, readonly=True)

@@ -37,6 +37,9 @@
                                         <span t-field="deployment.state"/>
                                     </p>
                                 </div>
+                                <a t-att-href="'/report/pdf/fleet_control.action_bus_deployment_report/%s' % deployment.id"
+                                   class="btn btn-primary">Print
+                                </a>
                             </div>
                         </div>
                     </t>
