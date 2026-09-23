@@ -39,6 +39,24 @@ class BusRoute(models.Model):
             'domain': [('route_id', '=', self.id)],
         }
 
+    deployment_ids = fields.One2many('bus.deployment', 'route_id', string='Deployments')
+    deployment_count = fields.Integer(compute='_compute_deployment_count')
+
+    @api.depends('deployment_ids')
+    def _compute_deployment_count(self):
+        for record in self:
+            record.deployment_count = len(record.deployment_ids)
+
+    def action_view_deployments(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Deployments',
+            'res_model': 'bus.deployment',
+            'view_mode': 'tree,form',
+            'domain': [('route_id', '=', self.id)],
+        }
+
     @api.depends('station_ids')
     def _compute_stations(self):
         for rec in self:
