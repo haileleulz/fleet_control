@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_deployment_detail">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <h1>Deployment Details</h1>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Bus</th>
+                        <td>
+                            <span t-field="deployment.bus_id"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Route</th>
+                        <td>
+                            <span t-field="deployment.route_id"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Depot</th>
+                        <td>
+                            <span t-field="deployment.depot_id"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>
+                            <span t-field="deployment.date"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>
+                            <span t-field="deployment.state"/>
+                        </td>
+                    </tr>
+                </table>
+                <a href="/fleet/deployment" class="btn btn-secondary">Back</a>
+            </div>
+        </t>
+    </template>
+</odoo>

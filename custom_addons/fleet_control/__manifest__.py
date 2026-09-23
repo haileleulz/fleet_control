@@ -8,7 +8,7 @@
     'description': """
     Bus Deployment and Route control System
     """,
-    'depends': ['base','web','website'],
+    'depends': ['base', 'web', 'website', 'contacts'],
     'data': [
         'security/res_groups.xml',
         'security/ir.model.access.csv',
@@ -17,10 +17,15 @@
         'views/bus_information.xml',
         'views/bus_stations.xml',
         'views/bus_depot.xml',
+        'views/bus_dashboard.xml',
+        'views/res_partner_views.xml',
         'views/menu.xml',
         'report/report_template.xml',
         'report/deployment_report.xml',
+        'report/portal_deployment_detail.xml',
+        'report/dashboard_report.xml',
         'report/web_template.xml',
+        'report/dashboard_template.xml',
     ],
     'installable': True,
     'application': True,

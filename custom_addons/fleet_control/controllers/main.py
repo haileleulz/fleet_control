@@ -13,3 +13,13 @@ class deployment(http.Controller):
                 'deployments': deployments,
             }
         )
+
+    @http.route('/fleet/deployment/<int:deployment_id>', auth='public', website=True)
+    def deployment_detail(self, deployment_id, **kw):
+        deployment = request.env['bus.deployment'].sudo().browse(deployment_id)
+        return request.render(
+            'fleet_control.portal_deployment_detail',
+            {
+                'deployment': deployment,
+            }
+        )

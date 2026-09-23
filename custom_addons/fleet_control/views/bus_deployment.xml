@@ -61,10 +61,11 @@
                                     </tree>
                                 </field>
                             </page>
+                            <field name="morning_driver_id"/>
                             <page string="Morning Info">
                                 <group>
-                                    <field name="morning_driver_id"/>
-                                    <field name="morning_conductor_id"/>
+                                    <field name="morning_driver_id" domain="[('role', '=', 'driver')]"/>
+                                    <field name="morning_conductor_id" domain="[('role', '=', 'conductor')]"/>
                                     <field name="morning_start_time" widget="float_time"/>
                                     <field name="morning_end_time" widget="float_time"/>
                                     <field name="morning_trip_count"/>
@@ -72,8 +73,8 @@
                             </page>
                             <page string="Afternoon Info">
                                 <group>
-                                    <field name="afternoon_driver_id"/>
-                                    <field name="afternoon_conductor_id"/>
+                                    <field name="afternoon_driver_id" domain="[('role', '=', 'driver')]"/>
+                                    <field name="afternoon_conductor_id" domain="[('role', '=', 'conductor')]"/>
                                     <field name="afternoon_start_time" widget="float_time"/>
                                     <field name="afternoon_end_time" widget="float_time"/>
                                     <field name="afternoon_trip_count"/>
