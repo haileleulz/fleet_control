@@ -20,6 +20,24 @@ class BusRoute(models.Model):
     total_km = fields.Float(string="Total KM")
     currency_id = fields.Many2one('res.currency', string='Currency',
                                   default=lambda self: self.env.user.company_id.currency_id)
+    sequence = fields.Integer(default=10)
+    deployment_ids = fields.One2many('bus.deployment', 'route_id', string='Deployments')
+    deployment_count = fields.Integer(compute='_compute_deployment_count')
+
+    @api.depends('deployment_ids')
+    def _compute_deployment_count(self):
+        for record in self:
+            record.deployment_count = len(record.deployment_ids)
+
+    def action_view_deployments(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Deployments',
+            'res_model': 'bus.deployment',
+            'view_mode': 'tree,form',
+            'domain': [('route_id', '=', self.id)],
+        }
 
     @api.depends('station_ids')
     def _compute_stations(self):

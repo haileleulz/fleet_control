@@ -15,31 +15,49 @@
                         <div class="col-md-6 mb-3">
                             <div class="card shadow-sm">
                                 <div class="card-header">
-                                    <strong>
-                                        <span t-field="deployment.bus_id"/>
-                                    </strong>
+                                    <h5 class="mb-0">
+                                        <a t-att-href="'/fleet/deployment/%s' % deployment.id">
+                                            <span t-field="deployment.bus_id"/>
+                                        </a>
+                                    </h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>
-                                        <strong>Route:</strong>
-                                        <span t-field="deployment.route_id"/>
-                                    </p>
-                                    <p>
-                                        <strong>Depot:</strong>
-                                        <span t-field="deployment.depot_id"/>
-                                    </p>
-                                    <p>
-                                        <strong>Date:</strong>
-                                        <span t-field="deployment.date"/>
-                                    </p>
+                                    <tr>
+                                        <th>Date</th>
+                                        <td>
+                                            <span t-field="deployment.date"/>
+                                        </td>
+                                    </tr>
                                     <p>
                                         <strong>Status:</strong>
-                                        <span t-field="deployment.state"/>
+                                        <t t-if="deployment.state == 'draft'">
+                                            <span class="badge bg-secondary">
+                                                Draft
+                                            </span>
+                                        </t>
+                                        <t t-if="deployment.state == 'submitted'">
+                                            <span class="badge bg-warning">
+                                                Submitted
+                                            </span>
+                                        </t>
+                                        <t t-if="deployment.state == 'approved'">
+                                            <span class="badge bg-success">
+                                                Approved
+                                            </span>
+                                        </t>
+                                        <t t-if="deployment.state == 'rejected'">
+                                            <span class="badge bg-danger">
+                                                Rejected
+                                            </span>
+                                        </t>
                                     </p>
                                 </div>
-                                <a t-att-href="'/report/pdf/fleet_control.action_bus_deployment_report/%s' % deployment.id"
-                                   class="btn btn-primary">Print
-                                </a>
+                                <div class="card-footer">
+                                    <a t-att-href="'/report/pdf/fleet_control.action_bus_deployment_report/%s' % deployment.id"
+                                       class="btn btn-primary">
+                                        Print
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </t>
@@ -47,5 +65,4 @@
             </div>
         </t>
     </template>
-
 </odoo>

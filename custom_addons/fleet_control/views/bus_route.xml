@@ -7,8 +7,10 @@
             <field name="model">bus.route</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="route_name"/>
+<!--                <tree editable="bottom">-->
+                    <field name="sequence" widget="handle"/>
                     <field name="route_number"/>
+                    <field name="route_name"/>
                     <field name="tariff" widget="monetary"/>
                     <field name="category"/>
                     <field name="number_of_stations"/>
@@ -23,6 +25,12 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" name="action_view_deployments" class="oe_stat_button"
+                                    icon="fa-bus">
+                                <field name="deployment_count" widget="statinfo" string="Deployments"/>
+                            </button>
+                        </div>
                         <group>
                             <group>
                                 <field name="route_name"/>

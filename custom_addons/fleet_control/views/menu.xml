@@ -21,6 +21,12 @@
             name="Setting"
             parent="menu_root_dispatch"
             groups="fleet_control.group_bus_dispatcher"/>
+    <menuitem
+            id="menu_fleet_dashboard"
+            name="Dashboard"
+            parent="menu_bus_settings"
+            action="action_fleet_dashboard"
+            sequence="1"/>
 
     <menuitem
             id="menu_bus_info"
