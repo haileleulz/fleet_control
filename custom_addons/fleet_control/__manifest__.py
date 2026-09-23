@@ -8,6 +8,7 @@
     'description': """
     Bus Deployment and Route control System
     """,
+    'depends': ['base','web','website'],
     'data': [
         'security/res_groups.xml',
         'security/ir.model.access.csv',
@@ -19,6 +20,7 @@
         'views/menu.xml',
         'report/report_template.xml',
         'report/deployment_report.xml',
+        'report/web_template.xml',
     ],
     'installable': True,
     'application': True,

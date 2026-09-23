@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="portal_deployments">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <div class="text-center mb-4">
+                    <h1>Bus Deployment Portal</h1>
+                    <p class="text-muted">
+                        Daily deployment information for all buses
+                    </p>
+                </div>
+                <div class="row">
+                    <t t-foreach="deployments" t-as="deployment">
+                        <div class="col-md-6 mb-3">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    <strong>
+                                        <span t-field="deployment.bus_id"/>
+                                    </strong>
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        <strong>Route:</strong>
+                                        <span t-field="deployment.route_id"/>
+                                    </p>
+                                    <p>
+                                        <strong>Depot:</strong>
+                                        <span t-field="deployment.depot_id"/>
+                                    </p>
+                                    <p>
+                                        <strong>Date:</strong>
+                                        <span t-field="deployment.date"/>
+                                    </p>
+                                    <p>
+                                        <strong>Status:</strong>
+                                        <span t-field="deployment.state"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>
