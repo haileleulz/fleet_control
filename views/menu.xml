@@ -57,4 +57,25 @@
             action="action_bus_depot"
             groups="fleet_control.group_bus_admin"/>
 
+
+    <menuitem
+            id="menu_bus_registry"
+            name="Registry"
+            parent="menu_root_dispatch"
+            groups="fleet_control.group_bus_dispatcher"/>
+
+    <menuitem
+            id="menu_driver"
+            name="Drivers"
+            parent="menu_bus_registry"
+            action="action_fleet_drivers"
+            groups="fleet_control.group_bus_dispatcher"/>
+
+    <menuitem
+            id="menu_conductors"
+            name="Conductors"
+            parent="menu_bus_registry"
+            action="action_fleet_conductors"
+            groups="fleet_control.group_bus_dispatcher"/>
+
 </odoo>
