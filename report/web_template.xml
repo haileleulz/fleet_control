@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="portal_deployments">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <div class="text-center mb-4">
+                    <h1>Bus Deployment Portal</h1>
+                    <p class="text-muted">
+                        Daily deployment information for all buses
+                    </p>
+                </div>
+                <div class="row">
+                    <t t-foreach="deployments" t-as="deployment">
+                        <div class="col-md-6 mb-3">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <a t-att-href="'/fleet/deployment/%s' % deployment.id">
+                                            <span t-field="deployment.bus_id"/>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <tr>
+                                        <th>Date</th>
+                                        <td>
+                                            <span t-field="deployment.date"/>
+                                        </td>
+                                    </tr>
+                                    <p>
+                                        <strong>Status:</strong>
+                                        <t t-if="deployment.state == 'draft'">
+                                            <span class="badge bg-secondary">
+                                                Draft
+                                            </span>
+                                        </t>
+                                        <t t-if="deployment.state == 'submitted'">
+                                            <span class="badge bg-warning">
+                                                Submitted
+                                            </span>
+                                        </t>
+                                        <t t-if="deployment.state == 'approved'">
+                                            <span class="badge bg-success">
+                                                Approved
+                                            </span>
+                                        </t>
+                                        <t t-if="deployment.state == 'rejected'">
+                                            <span class="badge bg-danger">
+                                                Rejected
+                                            </span>
+                                        </t>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <a t-att-href="'/report/pdf/fleet_control.action_bus_deployment_report/%s' % deployment.id"
+                                       class="btn btn-primary">
+                                        Print
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

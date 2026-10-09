@@ -1,0 +1,35 @@
+{
+    'name': 'Fleet Control',
+    'version': '1.0',
+    'author': 'Haile',
+    'category': 'Operations',
+    'website': 'https://www.haile.com',
+    'summary': 'Bus',
+    'description': """
+    Bus Deployment and Route control System
+    """,
+    'depends': ['base', 'web', 'mail', 'contacts', 'sale'],
+    'data': [
+        'security/res_groups.xml',
+        'security/ir.model.access.csv',
+        'report/report_template.xml',
+        'report/deployment_report.xml',
+        'views/bus_deployment.xml',
+        'views/bus_route.xml',
+        'views/bus_information.xml',
+        'views/bus_stations.xml',
+        'views/bus_depot.xml',
+        'views/bus_dashboard.xml',
+        'views/res_partner_views.xml',
+        'views/sale_order_views.xml',
+        'report/portal_deployment_detail.xml',
+        'report/dashboard_report.xml',
+        'report/web_template.xml',
+        'report/dashboard_template.xml',
+        'views/menu.xml',  # Moved to the bottom
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+    'sequence': 10,
+}

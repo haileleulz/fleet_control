@@ -1,0 +1,73 @@
+<odoo>
+
+    <record id="view_fleet_dashboard_form"
+            model="ir.ui.view">
+        <field name="name">fleet.dashboard.form</field>
+        <field name="model">fleet.dashboard</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0" duplicate="0">
+                <sheet>
+                    <header>
+                        <button name="action_print_dashboard" string="Print" type="object"
+                                class="btn-primary"/>
+                    </header>
+                    <div style="float:right;">
+                        <strong>Generated On:
+                            <field name="today_date" readonly="1" nolabel="1"/>
+                        </strong>
+                    </div>
+                    <h2 class="text-center mb-4">Fleet Dashboard</h2>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                                <strong>Total Buses</strong>
+                            </td>
+                            <td>
+                                <field name="total_buses" readonly="1" nolabel="1"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Total Routes</strong>
+                            </td>
+                            <td>
+                                <field name="total_routes" readonly="1" nolabel="1"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Total Depots</strong>
+                            </td>
+                            <td>
+                                <field name="total_depots" readonly="1" nolabel="1"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Total Deployments</strong>
+                            </td>
+                            <td>
+                                <field name="total_deployments" readonly="1" nolabel="1"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Today's Deployments</strong>
+                            </td>
+                            <td>
+                                <field name="total_deployments_today" readonly="1" nolabel="1"/>
+                            </td>
+                        </tr>
+                    </table>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_fleet_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">fleet.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+</odoo>

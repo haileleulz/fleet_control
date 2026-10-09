@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_fleet_dashboard">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:right; margin-bottom:15px;">
+                            <strong>Generated On:</strong>
+                            <span t-field="o.today_date"/>
+                        </div>
+                        <h2>Fleet Dashboard</h2>
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Total Buses</td>
+                                <td>
+                                    <span t-field="o.total_buses"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total Routes</td>
+                                <td>
+                                    <span t-field="o.total_routes"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total Depots</td>
+                                <td>
+                                    <span t-field="o.total_depots"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total Deployments</td>
+                                <td>
+                                    <span t-field="o.total_deployments"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Today's Deployments</td>
+                                <td>
+                                    <span t-field="o.total_deployments_today"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

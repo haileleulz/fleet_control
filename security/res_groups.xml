@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Fleet Control Category -->
+    <record id="module_category_fleet_control" model="ir.module.category">
+        <field name="name">Fleet Control</field>
+        <field name="description">Helps in control and allocation of buses</field>
+        <field name="sequence">50</field>
+    </record>
+
+    <!-- Fleet Control Privilege -->
+    <record id="privilege_fleet_control" model="res.groups.privilege">
+        <field name="name">Fleet Control</field>
+        <field name="category_id" ref="module_category_fleet_control"/>
+        <field name="sequence">50</field>
+    </record>
+
+    <!-- Dispatcher -->
+    <record id="group_bus_dispatcher" model="res.groups">
+        <field name="name">Dispatcher</field>
+        <field name="privilege_id" ref="privilege_fleet_control"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Administrator -->
+    <record id="group_bus_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="privilege_id" ref="privilege_fleet_control"/>
+        <field name="implied_ids" eval="[(4, ref('group_bus_dispatcher'))]"/>
+    </record>
+
+</odoo>
