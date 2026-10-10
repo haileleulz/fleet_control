@@ -21,6 +21,43 @@
             </field>
         </record>
 
+        <!--        <record id="view_bus_deployment_search" model="ir.ui.view">-->
+        <!--            <field name="name">bus.deployment.search</field>-->
+        <!--            <field name="model">bus.deployment</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search string="Search Bus Deployments">-->
+        <!--                    <field name="name" string="Reference"/>-->
+        <!--                    <field name="bus_id"/>-->
+        <!--                    <field name="route_id"/>-->
+        <!--                    <field name="depot_id"/>-->
+        <!--                    <field name="dispatcher_id"/>-->
+        <!--                    <field name="date"/>-->
+        <!--                    <field name="state"/>-->
+
+        <!--                    <separator/>-->
+        <!--                    <filter name="filter_draft" string="Draft" domain="[('state', '=', 'draft')]"/>-->
+        <!--                    <filter name="filter_submitted" string="Submitted" domain="[('state', '=', 'submitted')]"/>-->
+        <!--                    <filter name="filter_approved" string="Approved" domain="[('state', '=', 'approved')]"/>-->
+        <!--                    <filter name="filter_rejected" string="Rejected" domain="[('state', '=', 'rejected')]"/>-->
+        <!--                    <separator/>-->
+
+        <!--                    <filter name="filter_today" string="Today" domain="[('date', '=', context_today())]"/>-->
+        <!--                    <filter name="filter_this_month" string="This Month"-->
+        <!--                            domain="[-->
+        <!--                                        ('date', '&gt;=', context_today().replace(day=1)),-->
+        <!--                                        ('date', '&lt;=', context_today())]"/>-->
+        <!--                    <group expand="0" string="Group By">-->
+        <!--                        <filter name="group_by_depot" string="Depot" context="{'group_by': 'depot_id'}"/>-->
+        <!--                        <filter name="group_by_bus" string="Bus" context="{'group_by': 'bus_id'}"/>-->
+        <!--                        <filter name="group_by_route" string="Route" context="{'group_by': 'route_id'}"/>-->
+        <!--                        <filter name="group_by_dispatcher" string="Dispatcher" context="{'group_by': 'dispatcher_id'}"/>-->
+        <!--                        <filter name="group_by_state" string="Status" context="{'group_by': 'state'}"/>-->
+        <!--                        <filter name="group_by_date" string="Date" context="{'group_by': 'date'}"/>-->
+        <!--                    </group>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
         <record id="bus_deployment_form_view" model="ir.ui.view">
             <field name="name">bus.deployment.form</field>
             <field name="model">bus.deployment</field>
@@ -53,17 +90,21 @@
                                 <field name="dispatcher_id"/>
                             </group>
                         </group>
+
                         <notebook>
                             <page string="Details and Rerouting">
-                                <field name="additional_info_ids">
-                                    <list editable="bottom">
-                                        <field name="note"/>
-                                    </list>
-                                </field>
+                                <group string="Rerouting Notes">
+                                    <field name="additional_info_ids" nolabel="1">
+                                        <list editable="bottom">
+                                            <field name="note"/>
+                                        </list>
+                                    </field>
+                                </group>
                             </page>
-                            <field name="morning_driver_id"/>
+
                             <page string="Morning Info">
                                 <group>
+                                    <!-- Domains will securely filter out non-fleet partners -->
                                     <field name="morning_driver_id" domain="[('role', '=', 'driver')]"/>
                                     <field name="morning_conductor_id" domain="[('role', '=', 'conductor')]"/>
                                     <field name="morning_start_time" widget="float_time"/>
@@ -71,6 +112,7 @@
                                     <field name="morning_trip_count"/>
                                 </group>
                             </page>
+
                             <page string="Afternoon Info">
                                 <group>
                                     <field name="afternoon_driver_id" domain="[('role', '=', 'driver')]"/>
@@ -95,6 +137,7 @@
             <field name="name">Bus Deployment</field>
             <field name="res_model">bus.deployment</field>
             <field name="view_mode">list,form</field>
+            <field name="search_view_id" ref="bus_deployment_list_view"/>
             <field name="help" type="html">
                 <p class="o_nocontent_smiling_face">
                     Create Your content here
